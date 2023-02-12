@@ -7,8 +7,57 @@ from rest_framework.decorators import api_view # for functional based api View d
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import APIView # this for class based api views decorators
+from rest_framework import generics
+from rest_framework import mixins
+from rest_framework import viewsets
 
 # Create your views here.
+
+
+    
+
+
+
+
+'''
+# ----- USING MIXINS -----
+
+class ArticleList(generics.GenericAPIView, mixins.ListModelMixin, mixins.CreateModelMixin):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+    # mixins.ListModelMixin:  for listing models 'get'
+    def get(self, request):
+        return self.list(request)
+    
+
+    # mixins.CreateModelMixin: for creating model 'post'
+    def post(self, request):
+        return self.create(request)
+    
+# mixins for Retriving specific models, Updating models, and deleting models.
+class ArticleDetails(generics.GenericAPIView, mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+    # adding a lookup-field to avoid error of PK and ID
+    lookup_field = 'id'
+
+    def get(self, request, id):
+        return self.retrieve(request, id=id)
+    
+    def post(self, request, id):
+        return self.update(request, id=id)
+    
+    def delete(self, request, id):
+        return self.destroy(request, id=id)
+
+ '''
+
+
+
+'''
+# ------- class based api views -------
 
 
 class ArticleList(APIView):
@@ -52,6 +101,7 @@ class ArticleDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+'''
 
 
 
