@@ -37,9 +37,13 @@ export default class Forms extends Component {
         <input type='password' value={this.state.password} onChange={this.passwordHandler} placeholder='password' className='form-control'/>
         <button className='btn btn-primary'>Click Me</button>
 
-        {posts.map(post => <p key={post.id}>{post.title}</p>
-            )}
-
+        {posts.map
+            (post => 
+                <p key={post.id}>
+                    {post.title}
+                </p>
+            )
+        } 
       </div>
     )
   }

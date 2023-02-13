@@ -9,9 +9,10 @@ import Forms from './components/Forms';
 function App() {
   return (
     <div className="container">
-        <Name/>
+      <h1> HIII</h1>
+        {/* <Name/>
         <Example names= {['Python', 'Java', 'JavaScript', 'C#']}/>
-        <Forms />
+        <Forms /> */}
     </div>
   );
 }
