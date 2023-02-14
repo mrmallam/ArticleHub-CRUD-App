@@ -2,12 +2,13 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import ArticleList from './components/ArticleList';
 import Form from './components/Form';
-import { useCookies } from 'react-cookie' 
+import { useCookies } from 'react-cookie'
+import { useHistory } from 'react-router-dom';
 
 function App() {
   const [articles, setArticles] = useState([])
   const [editArticles, setEditArticles] = useState(null)
-  const [token] = useCookies(['myToken'])
+  const [token, setToken, removeToken] = useCookies(['myToken'])
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/articles/', {
@@ -21,6 +22,13 @@ function App() {
     .then(resp => setArticles(resp))
     .catch(error => console.log(error))
   }, [])
+
+  let history = useHistory()
+  useEffect(() => {
+    if(!token['myToken']) {
+        history.push('/')
+    }
+  }, [token, history]);
 
 
   const editBtn = (article) => {
@@ -61,6 +69,10 @@ function App() {
     setArticles(new_article)
   }
 
+  const logoutBtn = () => {
+    removeToken(['myToken'])
+  }
+
   return (
     <div className="App">
 
@@ -73,6 +85,10 @@ function App() {
 
         <div className='col'>
           <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
+        </div>
+
+        <div className='col'>
+          <button onClick={logoutBtn} className='btn btn-primary'>Logout</button>
         </div>
  
       </div>
