@@ -18,3 +18,7 @@
     transform: rotate(360deg);
   }
 }
+
+.hrclass{
+  background-color: red;
+}
