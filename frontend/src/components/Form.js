@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import APIService from '../APIService'
+import { useCookies } from 'react-cookie' 
 
 function Form(props) {
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [token] = useCookies(['myToken'])
 
     useEffect(() => {
         setTitle(props.article.title)
@@ -11,12 +13,12 @@ function Form(props) {
     }, [props.article])
 
     const updateArticle = () => {
-        APIService.UpdateArticle(props.article.id, {title, description})
+        APIService.UpdateArticle(props.article.id, {title, description}, token['myToken'])
         .then(resp => props.updatedInformation(resp))
     }
 
     const insertArticle = () => {
-        APIService.InsertArticle({title, description})
+        APIService.InsertArticle({title, description}, token['myToken'])
         .then(resp => props.insertedInformation(resp))
     }
     

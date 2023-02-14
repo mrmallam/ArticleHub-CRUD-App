@@ -2,17 +2,19 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import ArticleList from './components/ArticleList';
 import Form from './components/Form';
+import { useCookies } from 'react-cookie' 
 
 function App() {
   const [articles, setArticles] = useState([])
   const [editArticles, setEditArticles] = useState(null)
+  const [token] = useCookies(['myToken'])
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/articles/', {
       'method': 'GET',
       headers: {
         'Content-Type':'application/json',
-        'Authorization':'Token 3be75509a53db8275bf637d367c180fbb772e466'
+        'Authorization':`Token ${token['myToken']}`
       }
     })
     .then(resp => resp.json())
@@ -49,15 +51,15 @@ function App() {
 
   const DeleteArticle = (article) => {
     const new_article = articles.filter(my_article => {
-      if(my_article.id === article.id) return false;
-      else return true;
+      if(my_article.id === article.id){
+        return false;
+      } 
+      else{return true;}
       }
     )
+
     setArticles(new_article)
   }
-  
-    
-
 
   return (
     <div className="App">
