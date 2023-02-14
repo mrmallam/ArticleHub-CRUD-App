@@ -10,9 +10,6 @@ function App() {
   return (
     <div className="container">
       <h1> HIII</h1>
-        {/* <Name/>
-        <Example names= {['Python', 'Java', 'JavaScript', 'C#']}/>
-        <Forms /> */}
     </div>
   );
 }
