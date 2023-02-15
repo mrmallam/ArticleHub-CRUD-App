@@ -2,7 +2,6 @@
   min-height: 100vh;
   background-color: #282c34;
   color: white;
-  padding: 20px;
 }
 
 
@@ -21,4 +20,56 @@
 
 .hrclass{
   background-color: red;
+}
+
+
+
+/* Login  */
+.heroLogin{
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.title{
+  color: #0d2752;
+  font-size: 3rem;
+}
+
+.line {
+  background-color: lightgray;
+  margin: 1rem;
+  width: 25rem;
+  height: 0.050rem;
+  padding: 0;
+  
+}
+
+.form-input{
+  width: 20rem;
+}
+
+.loginButton{
+  width: 20rem;
+}
+
+.text {
+  font-size: 1rem;
+  color: grey;
+}
+
+.loginRegisterBtn{
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.incorrectCredentials{
+  color: red;
+  font-size: small;
 }

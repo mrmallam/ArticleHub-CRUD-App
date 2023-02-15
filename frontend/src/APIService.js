@@ -40,7 +40,13 @@ export default class APIService {
               'Content-Type':'application/json',
             },
             body:JSON.stringify(body)
-        }).then(resp => resp.json())
+        }).then(resp => {
+            if (resp.status === 200) {
+                return resp.json();
+            } else {
+                return 'Failed to login';
+            }
+        }) 
     }
 
 
@@ -56,3 +62,5 @@ export default class APIService {
 
 
 }
+
+

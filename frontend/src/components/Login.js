@@ -9,6 +9,7 @@ function Login() {
     const [password, setPassword] = useState('')
     const [token, setToken] = useCookies(['myToken'])
     const [isLogin, setIsLogin] = useState(true)
+    const [validCredentials, setValidCredentials] = useState(false)
 
     let history = useHistory()
     
@@ -19,9 +20,27 @@ function Login() {
     }, [token, history]);
 
     const LoginBtn = () => {
-        APIService.LoginUser({username, password}) 
-        .then(resp => setToken('myToken', resp.token))
-        .catch(error => console.error(error))
+      if (username.trim() == '' || password.trim() == '') {
+        // alert("please enter your username and password")
+        setValidCredentials(true)
+        setUsername('')
+        setPassword('')
+        return;
+      }
+
+      APIService.LoginUser({username, password}) 
+      .then(resp => {
+        if (resp === 'Failed to login') {
+          setValidCredentials(true)
+          setUsername('')
+          setPassword('')
+        }
+        else{
+          setToken('myToken', resp.token)
+          setValidCredentials(false)
+        }
+      })
+      .catch(error => console.error(error))
     }
 
     const registerBtn = () => {
@@ -32,34 +51,37 @@ function Login() {
     }
 
   return ( 
-    <div>
-      <div className='App'>
-        <br />
-        <br />
-        {isLogin ? <h1>Please Login</h1> : <h1>Please Register</h1>}
+    <section className='heroLogin'>
+      <div className='content'>
 
-        <div className='mb-3'>
-            <label htmlFor='username' className='form-label'>Username</label>
-            <input type='text' id='username' className='form-control' placeholder='Please enter Username' value={username} onChange={e => setUsername(e.target.value)}></input>
+        {isLogin ? <h1 className='title'>Login</h1> : <h1 className='title'>Register</h1>}
+
+        <div className='line' />
+        
+        <div className='form-input form-outline mb-4'>
+            <input type='text' id='username' className='form-control' placeholder='Enter Username' value={username} onChange={e => setUsername(e.target.value)}></input>
         </div>
 
-        <div className='mb-3'>
-            <label htmlFor='password' className='form-label'>Password</label>
-            <input type='password' id='password' className='form-control' placeholder='Please enter Password' value={password} onChange={e => setPassword(e.target.value)}></input>
+        <div className='form-input mb-3'>
+            <input type='password' id='password' className='form-control' placeholder='Enter Password' value={password} onChange={e => setPassword(e.target.value)}></input>
         </div>
 
-        {isLogin ? <button className='btn btn-primary' onClick={LoginBtn}>Login</button>
-        : <button className='btn btn-primary' onClick={registerBtn}>Register</button>}
+        <div>
+          {validCredentials ? <p className='incorrectCredentials'>Incorrect. Please enter a valid Username or Password</p> : null}
+          
+        </div>
+
+        {isLogin ? <button className='loginButton btn btn-primary btn-block mb-4' onClick={LoginBtn}>Login</button>
+        : <button className=' loginButton btn btn-primary btn-block mb-4' onClick={registerBtn}>Register</button>}
 
 
-        <div className='mb-3'>
-            <br />
-            {isLogin ? <h5>If you dont have an account, please <button className='btn btn-primary' onClick={() => setIsLogin(false)}>Register</button> Here</h5>
-            :<h5>If you have an account, please <button className='btn btn-primary' onClick={() => setIsLogin(true)}>Login</button> here.</h5>}
+        <div className=''>
+            {isLogin ? <h5 className='text'>Not a member? <a className='loginRegisterBtn' onClick={() => setIsLogin(false)}>Register</a></h5>
+            :<h5 className='text'>If you have an account, please <a className='loginRegisterBtn' onClick={() => setIsLogin(true)}>Login</a></h5>}
         </div>
 
       </div>
-    </div>
+    </section>
   )
 }
 
