@@ -19,22 +19,27 @@ function ArticleList(props) {
     <div>
     {props.articles && props.articles.map(article => {
             return (
-                <div key = {article.id}>
-                    <h2>{article.title}</h2>
-                    <p>{article.description}</p>
+                <div className='ArticleList' key = {article.id}>
+                    <div className='ArticleTitleContainer'>
+                        <h2 className='ArticleTitle'>{article.title}</h2>
+                    </div>
+                    
+                    <div className='ArticleDescriptionConatiner'>
+                     <p className='ArticleDescription'>{article.description}</p>
+                    </div>
 
-                    <div className='row'>
+                    <div className='btnArticleContainer'>
 
-                        <div className='col-md-1'>
+                        <div className='btnUpdateArticle'>
                             <button onClick={() => editBtn(article)} className='btn btn-primary'>Update</button>
                         </div>
 
-                        <div className='col'>
+                        <div className='btnDeleteArticle'>
                             <button onClick={() => deleteArticle(article)} className='btn btn-danger'>Delete</button>
                         </div>
  
                     </div>
-                    <hr className='hrclass'/>
+
                 </div>
             )
         }
