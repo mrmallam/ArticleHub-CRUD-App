@@ -1,31 +1,20 @@
+/*--------------------- General ---------------------*/
 .App {
   min-height: 100vh;
-  background-color: #dbe1e9;
-  font-family: sans-serif;
+  background-color: white;
   color: black;
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  line-height: 2rem;
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  max-width: 200ch;
 }
 
-/* Logout Button */
-.logout-welcome{
-  display: flex;
-  justify-content: space-between;
-  margin: 1rem;
-}
-.logoutBtn{
-  text-decoration: none;
-  font-size: 2rem;
-
-
-}
 
 input[type="text"]{
-
   background-color : rgba(244, 243, 243, 0.415); 
-
 }
 
 input[type="password"]{
@@ -36,50 +25,88 @@ textarea{
   background-color : rgba(244, 243, 243, 0.415) !important; 
 }
 
+/*--------------------- HEADER ---------------------*/
+.logout-welcome{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
 
-/* Form */
+}
+.welcome{
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-top: 1rem;
+}
+.logoutBtn{
+  text-decoration: none;
+  font-size: 2rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.lineHeader{
+  width: 100vw;
+  height: 0.02rem;
+  background-color: gray;
+
+}
+
+
+/*--------------------- Insert Btn ---------------------*/
+.insert_article_btn_container{
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.insert_article_btn{
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  width: 4rem;
+  height: 4rem;
+  font-size: 3rem;
+  text-align: center;
+  line-height: normal;
+  transition: all 0.2s ease; 
+}
+.insert_article_btn:hover{
+  width: 5rem;
+  height: 5rem;
+  font-size: 4rem;
+}
+
+
+/*--------------------- Form ---------------------*/
 .form {
-  background-color: white;
-  width: 70%;
-  min-height: 200px;
-  margin: 0 auto;
-  margin-bottom: 1rem;
-  border-radius: 2rem;
-  overflow: auto;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  text-align: center;
+  text-align: left;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 3rem;
 }
 
 .form_title_container{
+  margin: 2rem 0 1rem;
   
 }
 
 .form_title{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  font-size: 1.5rem;
 }
 
 .form_title_input{
-  padding: 1rem;
+
 }
 
 .form_description_container{
 }
 .form_description_title{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2rem;
-  font-weight: 400;
-  line-height: 1.2;
-  margin-top: 1rem;
-  margin-left: 1rem;
+  font-size: 1.5rem;
 }
 
 .form_description_input{
-  padding: 1rem;
+
 }
 
 .btn_insert_article{
@@ -88,76 +115,62 @@ textarea{
   margin: 1rem;
 }
 
-/* ArticleList */
-.ArticleList{
-  background-color: white;
-  width: 70%;
-  min-height: 200px;
-  margin: 0 auto;
+
+
+/*--------------------- ArticleList ---------------------*/
+.line_article{
+  background-color: grey;
+  height: 0.03rem;
+  text-align: center;
+  text-align: left;
   margin-bottom: 1rem;
-  border-radius: 2rem;
-  overflow: auto;
-  position: relative;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.insertArticle{
-  /* background-color: red; */
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  margin: 1rem;
+.ArticleList{
+  text-align: center;
+  text-align: left;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-bottom: 3rem;
+
 }
+
 
 .ArticleTitleContainer{
-  height: var(--title-height);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 1rem;
+
 }
 .ArticleTitle{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 2.3rem;
-  font-weight: 400;
-  line-height: 1.2;
-  margin: 0;
+
 }
 
 .ArticleDescriptionConatiner{
-  margin: 1rem;
-  position: relative;
-  padding-bottom: 3rem;
+
 
 }
 
 .ArticleDescription{
-  margin: 0 auto;
-  max-width: 120ch;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: #333;
+
 }
 
 .btnArticleContainer{
   display: flex;
-  width: 100%;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
+  justify-content: space-around;
+
 }
 
 .btnUpdateArticle{
-  margin: 1rem;
+
 }
 
 .btnDeleteArticle{
-  margin: 1rem;
+
 }
 
-/* Login  */
+
+
+
+/*--------------------- Login ---------------------*/
 .heroLogin{
   height: 100vh;
 }

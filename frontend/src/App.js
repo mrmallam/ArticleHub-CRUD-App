@@ -80,19 +80,19 @@ function App() {
 
 
       <div className='logout-welcome'>
-        <h2>
+        <h2 className='welcome'>
           Welcome <p></p>
         </h2>
         <a onClick={logoutBtn} className='logoutBtn'>Logout</a>
       </div>
 
-      <div className='insertArticle'>
-        <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
+      <div className='lineHeader'></div>
+
+      <div className='insert_article_btn_container'>
+        <a className='insert_article_btn' onClick={articleForm}>+</a>
       </div>
       
       {editArticles && inserBtnPressed ? <Form article={editArticles} setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
-
-
 
       <ArticleList articles = {articles} editBtn = {editBtn} DeleteArticle={DeleteArticle} />
 

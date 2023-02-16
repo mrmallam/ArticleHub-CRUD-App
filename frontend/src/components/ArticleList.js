@@ -17,9 +17,12 @@ function ArticleList(props) {
 
   return (
     <div>
+    
     {props.articles && props.articles.map(article => {
             return (
                 <div className='ArticleList' key = {article.id}>
+                    <div className='line_article'></div>
+                    
                     <div className='ArticleTitleContainer'>
                         <h2 className='ArticleTitle'>{article.title}</h2>
                     </div>
@@ -39,7 +42,6 @@ function ArticleList(props) {
                         </div>
  
                     </div>
-
                 </div>
             )
         }

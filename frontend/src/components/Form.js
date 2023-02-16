@@ -45,7 +45,7 @@ function Form(props) {
                     </div>
         
                     <div className='form_description_input'>
-                    <textarea className='form-control' id='description' rows='5' value={description} onChange={e => setDescription(e.target.value)}  /> 
+                    <textarea className='form-control' id='description' placeholder='Enter Description' rows='5' value={description} onChange={e => setDescription(e.target.value)}  /> 
                     </div>
                 </div>
                 
