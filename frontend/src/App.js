@@ -9,6 +9,7 @@ function App() {
   const [articles, setArticles] = useState([])
   const [editArticles, setEditArticles] = useState(null)
   const [token, setToken, removeToken] = useCookies(['myToken'])
+  const [inserBtnPressed, setInserBtnPressed] = useState(true)
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/articles/', {
@@ -48,6 +49,7 @@ function App() {
   }
 
   const articleForm = () => {
+    setInserBtnPressed(true)
     setEditArticles({title: '', description: ''});
   }
 
@@ -76,26 +78,25 @@ function App() {
   return (
     <div className="App">
 
-      <div className='row'>
 
-        <div className='col'>
-          <h2>Django And ReactJS Course</h2>
-          <br />
-        </div>
-
-        <div className='col'>
-          <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
-        </div>
-
-        <div className='col'>
-          <button onClick={logoutBtn} className='btn btn-primary'>Logout</button>
-        </div>
- 
+      <div className='logout-welcome'>
+        <h2>
+          Welcome <p></p>
+        </h2>
+        <a onClick={logoutBtn} className='logoutBtn'>Logout</a>
       </div>
 
-      <ArticleList articles = {articles} editBtn = {editBtn} DeleteArticle={DeleteArticle} />
+      <div className='insertArticle'>
+        <button onClick={articleForm} className='btn btn-primary'>Insert Article</button>
+      </div>
       
-      {editArticles ? <Form article={editArticles} updatedInformation={updatedInformation} insertedInformation={insertedInformation}/> : null}
+      {editArticles && inserBtnPressed ? <Form article={editArticles} setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
+
+
+
+      <ArticleList articles = {articles} editBtn = {editBtn} DeleteArticle={DeleteArticle} />
+
+
     </div>
   ); 
 }

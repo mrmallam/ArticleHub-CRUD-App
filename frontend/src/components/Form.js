@@ -18,27 +18,44 @@ function Form(props) {
     }
 
     const insertArticle = () => {
+        props.setInserBtnPressed(false);
         APIService.InsertArticle({title, description}, token['myToken'])
         .then(resp => props.insertedInformation(resp))
     }
     
   return (
-    <div>
+    <div className=''>
         {props.article ? (
-            <div className='mb-3'>
-                <label htmlFor='title' className='form-label'>Title</label>
-                <input type='text' className='form-control' id='title' placeholder='Enter Title' value={title} onChange={e => setTitle(e.target.value)} />
+            <div className='form'>
 
-                <label htmlFor='description' className='form-label'>Description</label>
-                <textarea className='form-control' id='description' rows='5' value={description} onChange={e => setDescription(e.target.value)}  /> 
 
-                <br />
+                <div className='form_title_container'>
+                    <div className='form_title'>
+                      <label htmlFor='text' className='form-label'>Title</label>
+                    </div>
+                    <div className='form_title_input'>
+                        <input type='text' className='form-control' id='title' placeholder='Enter Title' value={title} onChange={e => setTitle(e.target.value)} />
+                    </div>
+                </div>
 
-                { props.article.id ? 
-                    <button className='btn btn-success' onClick={updateArticle}>Update Article</button>
-                    : 
-                    <button onClick={insertArticle} className='btn btn-success'>Insert Article</button>
-                }
+
+                <div className='form_description_container'>
+                    <div className='form_description_title'>
+                      <label htmlFor='description' className='form-label'>Description</label>
+                    </div>
+        
+                    <div className='form_description_input'>
+                    <textarea className='form-control' id='description' rows='5' value={description} onChange={e => setDescription(e.target.value)}  /> 
+                    </div>
+                </div>
+                
+                <div className='btn_insert_article'>
+                    { props.article.id ? 
+                        <button className='btn btn-success' onClick={updateArticle}>Update Article</button>
+                        : 
+                        <button onClick={insertArticle} className='btn btn-success'>Insert Article</button>
+                    }
+                </div>
 
                
             </div>
