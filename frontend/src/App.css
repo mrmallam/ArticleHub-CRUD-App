@@ -1,6 +1,6 @@
 /*--------------------- General ---------------------*/
 .App {
-  min-height: 100vh;
+  min-height: 100%;
   background-color: white;
   color: rgba(0, 0, 0, 0.772);  
   overflow-x: hidden;
