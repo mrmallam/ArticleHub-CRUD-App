@@ -10,6 +10,7 @@ function App() {
   const [editArticles, setEditArticles] = useState(null)
   const [token, setToken, removeToken] = useCookies(['myToken'])
   const [inserBtnPressed, setInserBtnPressed] = useState(true)
+  const [updateBtnPressed, setUpdateBtnPressed] = useState(true)
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/articles/', {
@@ -33,6 +34,7 @@ function App() {
 
 
   const editBtn = (article) => {
+    
     setEditArticles(article)
   }
 
@@ -49,7 +51,7 @@ function App() {
   }
 
   const articleForm = () => {
-    setInserBtnPressed(true)
+
     setEditArticles({title: '', description: ''});
   }
 
@@ -92,9 +94,9 @@ function App() {
         <a className='insert_article_btn' onClick={articleForm}>+</a>
       </div>
       
-      {editArticles && inserBtnPressed ? <Form article={editArticles} setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
+      {editArticles && (inserBtnPressed || updateBtnPressed) ? <Form article={editArticles} setUpdateBtnPressed={setUpdateBtnPressed} setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
 
-      <ArticleList articles = {articles} editBtn = {editBtn} DeleteArticle={DeleteArticle} />
+      <ArticleList articles={articles} setUpdateBtnPressed={setUpdateBtnPressed} editBtn={editBtn} DeleteArticle={DeleteArticle}/>
 
 
     </div>

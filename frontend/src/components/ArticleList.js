@@ -6,6 +6,7 @@ function ArticleList(props) {
     const [token] = useCookies(['myToken'])
 
     const editBtn = (article) => {
+        props.setUpdateBtnPressed(true)
         props.editBtn(article)
     }
 

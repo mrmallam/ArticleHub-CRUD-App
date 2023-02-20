@@ -13,8 +13,12 @@ function Form(props) {
     }, [props.article])
 
     const updateArticle = () => {
+       
         APIService.UpdateArticle(props.article.id, {title, description}, token['myToken'])
-        .then(resp => props.updatedInformation(resp))
+        .then(resp => {
+            props.updatedInformation(resp)
+            props.setUpdateBtnPressed(false)
+        })
     }
 
     const insertArticle = () => {
@@ -27,9 +31,10 @@ function Form(props) {
     <div className=''>
         {props.article ? (
             <div className='form'>
-
+                
 
                 <div className='form_title_container'>
+                    <div className='line_article'></div>
                     <div className='form_title'>
                       <label htmlFor='text' className='form-label'>Title</label>
                     </div>
