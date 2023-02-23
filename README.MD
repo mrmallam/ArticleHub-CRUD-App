@@ -37,7 +37,7 @@
 </ul>
 <br/>
 <h2>Current Status</h2>
-<p>This project is still under development. I am currently working on containerizing the application, adding CI/CD pipelines, deploying it, and applying DevOps practices to improve my DevOps skills.
+<p>This project is still under development. I am currently working on adding CI/CD pipelines, deploying it, and applying DevOps practices to improve my DevOps skills.
 </p>
 <br/>
 <h2>Installation</h2>
