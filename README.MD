@@ -3,6 +3,15 @@
 <h2>Overview</h2>
 <p>This project is a simple CRUD application for adding, deleting, and updating articles or blogs that contain a title and a description. It is implemented using React for the frontend and Django Rest Framework for the backend. The app also has user login and register functionality, where every user has their unique token. The app saves user's login session by using cookies.</p>
 <br/>
+<h2>To run:</h2>
+<ol>
+    <li>You must have  <a href="https://docs.docker.com/get-docker/">Docker</a> and <a href="https://docs.docker.com/compose/install/">Docker-Compose</a> installed</li>
+    <li>Clone the repository and navigate to the root directory</li>
+    <li>Run: <code>docker-compose build</code></li>
+    <li>Run: <code>docker-compose up -d</code></li>
+    <li>Navigate to http://localhost:3000</li>
+</ol>
+<br/>
 <h2>Technologies Used</h2>
 <h3>Frontend</h3>
 <ul>
