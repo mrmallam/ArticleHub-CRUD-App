@@ -40,15 +40,3 @@
 <p>This project is still under development. I am currently working on adding CI/CD pipelines, deploying it, and applying DevOps practices to improve my DevOps skills.
 </p>
 <br/>
-<h2>Installation</h2>
-<h3>Prerequisites</h3>
-<ul>
-Node.js
-Python 3.x
-Installation Steps
-Clone the repository
-Install the required packages for the frontend by running npm install
-Install the required packages for the backend by running pip install -r requirements.txt
-Start the frontend server by running npm start
-Start the backend server by running python manage.py runserver
-</ul>
