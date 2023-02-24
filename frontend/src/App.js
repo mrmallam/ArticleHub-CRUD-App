@@ -5,12 +5,12 @@ import Form from './components/Form';
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom';
 
-function App() {
+function App(props) {
   const [articles, setArticles] = useState([])
   const [editArticles, setEditArticles] = useState(null)
   const [token, setToken, removeToken] = useCookies(['myToken'])
-  const [inserBtnPressed, setInserBtnPressed] = useState(true)
-  const [updateBtnPressed, setUpdateBtnPressed] = useState(true)
+  const [inserBtnPressed, setInserBtnPressed] = useState(false)
+  const [updateBtnPressed, setUpdateBtnPressed] = useState(false)
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/articles/', {
@@ -33,6 +33,7 @@ function App() {
   }, [token, history]);
 
 
+
   const editBtn = (article) => {
     
     setEditArticles(article)
@@ -51,6 +52,8 @@ function App() {
   }
 
   const articleForm = () => {
+    setInserBtnPressed(prevState => !prevState);
+    setUpdateBtnPressed(prevState => !prevState);
 
     setEditArticles({title: '', description: ''});
   }
@@ -83,7 +86,7 @@ function App() {
 
       <div className='logout-welcome'>
         <h2 className='welcome'>
-          Welcome <p></p>
+          Welcome <p className='username'>{props.user}</p>
         </h2>
         <a onClick={logoutBtn} className='logoutBtn'>Logout</a>
       </div>
@@ -93,8 +96,9 @@ function App() {
       <div className='insert_article_btn_container'>
         <a className='insert_article_btn' onClick={articleForm}>+</a>
       </div>
-      
-      {editArticles && (inserBtnPressed || updateBtnPressed) ? <Form article={editArticles} setUpdateBtnPressed={setUpdateBtnPressed} setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
+
+      {/* setUpdateBtnPressed={setUpdateBtnPressed} */}
+      {(editArticles && (inserBtnPressed || updateBtnPressed)) ? <Form article={editArticles}  setInserBtnPressed={setInserBtnPressed} updatedInformation={updatedInformation}  insertedInformation={insertedInformation}/> : null}
 
       <ArticleList articles={articles} setUpdateBtnPressed={setUpdateBtnPressed} editBtn={editBtn} DeleteArticle={DeleteArticle}/>
 

@@ -4,7 +4,10 @@ import APIService from '../APIService'
 import { useCookies } from 'react-cookie'
 import { useHistory } from 'react-router-dom';
 
-function Login() {
+
+export const UsernameContext = React.createContext()
+
+function Login(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [token, setToken] = useCookies(['myToken'])
@@ -12,7 +15,6 @@ function Login() {
     const [validCredentials, setValidCredentials] = useState(false)
 
     let history = useHistory()
-    
     useEffect(() => {
         if(token['myToken']) {
             history.push('/articles')
@@ -27,6 +29,8 @@ function Login() {
         setPassword('')
         return;
       }
+      props.setUser(username)
+
 
       APIService.LoginUser({username, password}) 
       .then(resp => {
@@ -53,7 +57,6 @@ function Login() {
   return ( 
     <section className='heroLogin'>
       <div className='content'>
-
         {isLogin ? <h1 className='title'>Login</h1> : <h1 className='title'>Register</h1>}
 
         <div className='line' />
@@ -81,6 +84,9 @@ function Login() {
         </div>
 
       </div>
+
+      <UsernameContext.Provider value={username} >
+      </UsernameContext.Provider>
     </section>
   )
 }

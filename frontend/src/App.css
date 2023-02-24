@@ -33,6 +33,8 @@ textarea{
 
 }
 .welcome{
+  display: flex;
+  
   font-size: 2rem;
   margin-left: 1rem;
   margin-top: 1rem;
@@ -88,13 +90,27 @@ textarea{
   margin-bottom: 3rem;
 }
 
+
 .form_title_container{
   margin: 2rem 0 1rem;
   
 }
+.trash_container{
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.username{
+  font-style: italic;
+  padding-left: 0.75rem;
+  font-weight: bold;
+
+}
 
 .form_title{
   font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form_title_input{

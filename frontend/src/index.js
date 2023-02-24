@@ -7,14 +7,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, BrowserRouter } from 'react-router-dom';
 import Login from './components/Login';
 import { CookiesProvider } from 'react-cookie';
+import { useState } from 'react';
 
 
 function Router(){
+  const [user, setUser] = useState('')
+
   return (
     <CookiesProvider>
       <BrowserRouter>
-        <Route exact path ="/" component={Login}/>
-        <Route exact path ="/articles" component={App} />
+        <Route exact path ="/" render={(props) => <Login {...props} setUser={setUser} />}/>
+        <Route exact path ="/articles" render={(props) => <App {...props} user={user} />} />
       </BrowserRouter>
     </CookiesProvider>
   )
